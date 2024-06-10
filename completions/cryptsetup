@@ -49,6 +49,9 @@ _comp_cmd_cryptsetup()
                             ;;
                     esac
                     ;;
+                *)
+                    _comp_compgen_filedir
+                    ;;
             esac
         else
            _comp_compgen -- -W 'open close resize status benchmark repair
