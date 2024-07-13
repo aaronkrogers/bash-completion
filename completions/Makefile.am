@@ -121,7 +121,6 @@ bashcomp_DATA = 2to3 \
 		firefox \
 		flake8 \
 		_flamegraph \
-		freebsd-update \
 		freeciv \
 		freeciv-server \
 		function \
@@ -216,8 +215,6 @@ bashcomp_DATA = 2to3 \
 		_keyring \
 		kill \
 		killall \
-		kldload \
-		kldunload \
 		koji \
 		_kontena \
 		ktutil \
@@ -325,19 +322,14 @@ bashcomp_DATA = 2to3 \
 		_pipenv \
 		pkg-config \
 		pkg-get \
-		pkg_delete \
 		pkgadd \
 		pkgrm \
 		pkgtool \
-		pkgutil \
 		plague-client \
 		pm-hibernate \
 		pm-is-supported \
 		pm-powersave \
 		pngfix \
-		portinstall \
-		portsnap \
-		portupgrade \
 		postcat \
 		postconf \
 		postfix \
@@ -410,6 +402,7 @@ bashcomp_DATA = 2to3 \
 		smartctl \
 		smbclient \
 		snownews \
+		_sops \
 		sqlite3 \
 		ss \
 		ssh \
@@ -503,6 +496,26 @@ bashcomp_DATA = 2to3 \
 		yum-arch \
 		zopfli \
 		zopflipng
+
+
+if SOLARIS
+bashcomp_DATA += pkgutil
+endif
+
+if BSD
+bashcomp_DATA += pkg_delete
+endif
+
+if FREEBSD
+bashcomp_DATA += \
+		freebsd-update \
+		kldload \
+		kldunload \
+		portinstall \
+		portsnap \
+		portupgrade
+endif
+
 
 EXTRA_DIST = $(bashcomp_DATA)
 
@@ -675,6 +688,7 @@ CLEANFILES = \
 	javac \
 	javadoc \
 	_k3s \
+	_kata-runtime \
 	_kn \
 	_kool \
 	kplayer \
@@ -749,6 +763,7 @@ CLEANFILES = \
 	muttng \
 	ncal \
 	neomutt \
+	_nerdctl \
 	_nfpm \
 	_nomad \
 	_npm \
@@ -767,8 +782,6 @@ CLEANFILES = \
 	ping4 \
 	ping6 \
 	_pip3 \
-	pkg_deinstall \
-	pkg_info \
 	pkgconf \
 	pkill \
 	plzip \
@@ -885,6 +898,7 @@ CLEANFILES = \
 	_tkn \
 	_tkn-pac \
 	tightvncviewer \
+	_todoist \
 	_tofu \
 	tracepath6 \
 	_trivy \
@@ -1039,6 +1053,7 @@ symlinks: $(DATA)
 		_mmctl \
 		_moldy \
 		_multi-gitter \
+		_nerdctl \
 		_nfpm \
 		_oc \
 		_okteto \
@@ -1156,8 +1171,10 @@ symlinks: $(DATA)
 		_black _blackd _flask _httpx
 	$(ss) pkg-config \
 		pkgconf
+if BSD
 	$(ss) pkg_delete \
 		pkg_deinstall pkg_info
+endif
 	$(ss) pgrep \
 		pkill
 	$(ss) pm-hibernate \
@@ -1202,6 +1219,8 @@ symlinks: $(DATA)
 		sbcl-mt
 	$(ss) sha256sum \
 		b2sum md5sum shasum sha1sum sha224sum sha384sum sha512sum
+	$(ss) _sops \
+		_kata-runtime _todoist
 	$(ss) ssh \
 		autossh scp sftp sidedoor slogin
 	$(ss) sudo \
