@@ -38,7 +38,7 @@ _comp_cmd_cryptsetup()
             local arg=$REPLY
             _comp_count_args -a "-${noargopts}[chslSbopitTdM]"
             local args=$REPLY
-    
+
             case $arg in
                 close | remove | luksClose | loopaesClose | tcryptClose | status | resize | \
                     luksSuspend | luksResume)
