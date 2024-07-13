@@ -78,6 +78,7 @@ bashcomp_DATA = 2to3 \
 		curl \
 		cvs \
 		cvsps \
+		dbus-launch \
 		dd \
 		declare \
 		deja-dup \
