@@ -30,7 +30,6 @@ _comp_cmd_cryptsetup()
     [[ $was_split ]] && return
 
     local REPLY
-
     if [[ $cur == -* ]]; then
         _comp_compgen_help
         [[ ${COMPREPLY-} == *= ]] && compopt -o nospace
@@ -54,11 +53,11 @@ _comp_cmd_cryptsetup()
                     ;;
             esac
         else
-           _comp_compgen -- -W 'open close resize status benchmark repair
-               erase luksFormat luksAddKey luksRemoveKey luksChangeKey
-               luksKillSlot luksUUID isLuks luksDump tcryptDump luksSuspend
-               luksResume luksHeaderBackup luksHeaderRestore'
-       fi
+            _comp_compgen -- -W 'open close resize status benchmark repair
+                erase luksFormat luksAddKey luksRemoveKey luksChangeKey
+                luksKillSlot luksUUID isLuks luksDump tcryptDump luksSuspend
+                luksResume luksHeaderBackup luksHeaderRestore'
+        fi
     fi
 
 } &&
